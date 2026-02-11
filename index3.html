@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bishop Heber college· Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #eaf0f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .college-card {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -10px rgba(8, 60, 70, 0.15);
+            padding: 2.2rem 2.5rem;
+            border: 1px solid #cde0e3;
+        }
+
+        /* Bishop Heber College Header */
+        .college-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .college-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0a3e4b;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #b8914b;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .autonomous {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #3a6e78;
+            margin-top: 0.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .principal-tag {
+            font-size: 0.75rem;
+            color: #5a3e2b;
+            background: #f3ede8;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            margin-top: 0.4rem;
+            font-weight: 600;
+        }
+
+        /* Registration Title */
+        .reg-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a4e5a;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #b8914b;
+            padding-left: 1rem;
+        }
+
+        /* Registration Form */
+        .reg-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #b6d0d5;
+            padding-bottom: 0.3rem;
+        }
+
+        .field-label {
+            font-weight: 650;
+            color: #1d5963;
+            min-width: 140px;
+            font-size: 1.05rem;
+        }
+
+        .field-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px dotted #3c818c;
+            background: transparent;
+            padding: 0.4rem 0.2rem;
+            font-size: 1rem;
+            outline: none;
+            color: #0a3b44;
+            font-weight: 500;
+        }
+
+        .field-input:focus {
+            border-bottom: 2px solid #b47d48;
+        }
+
+        .field-input::placeholder {
+            color: #9ebac0;
+            font-style: italic;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: #0d5d68;
+            border: none;
+            border-radius: 50px;
+            padding: 0.9rem 1.8rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            width: 100%;
+            margin: 0.5rem 0 0.2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 18px -6px #0a4a54;
+            cursor: pointer;
+            transition: 0.1s;
+            letter-spacing: 0.8px;
+        }
+
+        .submit-btn:hover {
+            background: #0b4e58;
+            transform: scale(1.01);
+        }
+
+        /* ========= NO DATABASE PREVIEW – REMOVED COMPLETELY ========= */
+
+        /* Admin Access Section – 6 digit password boxes */
+        .admin-section {
+            margin-top: 2.2rem;
+            border-top: 2px solid #b8914b;
+            padding-top: 1.6rem;
+        }
+
+        .admin-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a4350;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-desc {
+            font-size: 0.8rem;
+            color: #366872;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Six separate password boxes */
+        .six-pass {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .pass-digit {
+            width: 55px;
+            height: 60px;
+            background: white;
+            border: 2px solid #c0d7db;
+            border-radius: 18px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e5e69;
+            outline: none;
+            caret-color: #b47d48;
+        }
+
+        .pass-digit:focus {
+            border-color: #b47d48;
+            box-shadow: 0 0 0 2px rgba(180,125,72,0.2);
+        }
+
+        .unlock-btn {
+            background: #1f6873;
+            border: none;
+            border-radius: 40px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: 1px solid #9ecbd2;
+            margin-top: 0.2rem;
+        }
+
+        .unlock-btn:hover {
+            background: #0e5661;
+        }
+
+        /* Admin Action Buttons – Download & Delete (side by side) */
+        .admin-actions {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn-excel {
+            background: #1d7e5b;
+            border: none;
+            border-radius: 40px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #a1dac4;
+            cursor: pointer;
+        }
+
+        .btn-delete {
+            background: #b1624a;
+            border: none;
+            border-radius: 40px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #e6b8a8;
+            cursor: pointer;
+        }
+
+        .btn-delete:hover {
+            background: #9e4e3a;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-msg {
+            color: #b84a3a;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            min-height: 1.6rem;
+        }
+
+        .footer {
+            margin-top: 1.8rem;
+            text-align: right;
+            font-size: 0.65rem;
+            color: #568b94;
+            border-top: 1px solid #d0e2e5;
+            padding-top: 0.8rem;
+            font-weight: 600;
+        }
+
+        .success-msg {
+            color: #1d7e5b;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="college-card">
+
+        <!-- ========== BISHOP HEBER COLLEGE HEADER ========= -->
+        <div class="college-header">
+            <div class="college-name">Bishop Heber College</div>
+            <div class="autonomous">(Autonomous)</div>
+            <div class="principal-tag">Tiruchirappalli, Tamil Nadu, India</div>
+        </div>
+
+        <!-- ========== REGISTRATION ========= -->
+        <div class="reg-title">Registration</div>
+
+        <!-- ========== REGISTRATION FORM ========= -->
+        <div class="reg-form">
+            <div class="field-row">
+                <span class="field-label">- Name:</span>
+                <input type="text" class="field-input" id="nameInput" placeholder="Enter your name" autocomplete="off">
+            </div>
+            <div class="field-row">
+                <span class="field-label">- ID Roll No:</span>
+                <input type="text" class="field-input" id="rollInput" placeholder="Enter your roll number" autocomplete="off">
+            </div>
+            <div class="field-row">
+                <span class="field-label">- Email:</span>
+                <input type="email" class="field-input" id="emailInput" placeholder="Enter your email" autocomplete="off">
+            </div>
+            <div class="field-row">
+                <span class="field-label">- Department:</span>
+                <input type="text" class="field-input" id="deptInput" placeholder="Enter your department" autocomplete="off">
+            </div>
+            <div class="field-row">
+                <span class="field-label">- Mobile Number:</span>
+                <input type="tel" class="field-input" id="mobileInput" placeholder="Enter your mobile number" autocomplete="off">
+            </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button class="submit-btn" id="registerBtn">
+            📋 Submit
+        </button>
+
+        <!-- ========== NO DATABASE PREVIEW – COMPLETELY REMOVED ========= -->
+
+        <!-- ========== ADMIN ACCESS – 6 DIGIT PASSWORD ========= -->
+        <div class="admin-section">
+            <div class="admin-title">
+                🔐 ADMIN ACCESS REQUIRED
+            </div>
+            <div class="admin-desc">
+                Enter Password to enable Excel download & delete.
+            </div>
+
+            <!-- 6 separate password boxes (each 1 digit) -->
+            <div class="six-pass" id="sixPasswordBox">
+                <input type="password" class="pass-digit" id="pass1" maxlength="1" autocomplete="off">
+                <input type="password" class="pass-digit" id="pass2" maxlength="1" autocomplete="off">
+                <input type="password" class="pass-digit" id="pass3" maxlength="1" autocomplete="off">
+                <input type="password" class="pass-digit" id="pass4" maxlength="1" autocomplete="off">
+                <input type="password" class="pass-digit" id="pass5" maxlength="1" autocomplete="off">
+                <input type="password" class="pass-digit" id="pass6" maxlength="1" autocomplete="off">
+            </div>
+
+            <!-- UNLOCK button -->
+            <button class="unlock-btn" id="unlockBtn">
+                🔓 UNLOCK
+            </button>
+            <div id="passwordError" class="error-msg"></div>
+
+            <!-- Admin Action Buttons – Download & DELETE (hidden by default) -->
+            <div id="adminActionsContainer" class="admin-actions hidden">
+                <button id="exportExcelBtn" class="btn-excel">
+                    ⬇️ EXPORT EXCEL SHEET 
+                </button>
+                <button id="deleteDataBtn" class="btn-delete">
+                    🗑️ DELETE ALL EXCEL DATA
+                </button>
+            </div>
+            <div id="actionFeedback" style="min-height: 1.8rem;"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Bishop Heber college (Autonomous) Tiruchirappalli, Tamil Nadu, India
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ---------- DATABASE (Memory + localStorage) ----------
+            let registrationDB = [];
+            const STORAGE_KEY = 'bhc_reg_db_no_preview_delete';
+
+            // Load existing data from localStorage
+            function loadDatabase() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        registrationDB = JSON.parse(stored);
+                    } catch(e) {
+                        registrationDB = [];
+                    }
+                } else {
+                    // Initial sample data
+                    registrationDB = [
+                     
+                    ];
+                    saveDatabase();
+                }
+            }
+
+            function saveDatabase() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(registrationDB));
+            }
+
+            // ---------- ADD REGISTRATION (auto enters Excel database) ----------
+            function addRegistration(nama, roll, email, dept, mobile) {
+                registrationDB.push({
+                    nama: nama.trim(),
+                    roll: roll.trim(),
+                    email: email.trim(),
+                    dept: dept.trim(),
+                    mobile: mobile.trim()
+                });
+                saveDatabase();
+                // NO PREVIEW RENDER
+            }
+
+            // ---------- DELETE ALL DATA (Admin only) ----------
+            function deleteAllData() {
+                if (registrationDB.length === 0) {
+                    alert('📭 Database is already empty.');
+                    return;
+                }
+                
+                if (confirm('⚠️ Are you sure you want to DELETE ALL registration data? This cannot be undone.')) {
+                    registrationDB = [];  // Clear array
+                    saveDatabase();       // Save empty array to localStorage
+                    showFeedback('✅ All Excel data has been deleted successfully.', 'success');
+                }
+            }
+
+            // ---------- VALIDATION ----------
+            function isValid(nama, roll, email, dept, mobile) {
+                if (!nama || !roll || !email || !dept || !mobile) {
+                    alert('❌ All fields are required!');
+                    return false;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('❌ Enter a valid email address.');
+                    return false;
+                }
+                const digits = mobile.replace(/\D/g, '');
+                if (digits.length !== 10) {
+                    alert('❌ Mobile number must be exactly 10 digits.');
+                    return false;
+                }
+                return true;
+            }
+
+            // ---------- EXPORT CSV (Admin only) ----------
+            function exportToCSV() {
+                if (registrationDB.length === 0) {
+                    alert('No data to export.');
+                    return;
+                }
+
+                const headers = ['Nama', 'Roll no', 'Email', 'Department', 'Mobile number'];
+                const rows = [headers.join(',')];
+
+                registrationDB.forEach(entry => {
+                    const row = [
+                        escapeCSV(entry.nama),
+                        escapeCSV(entry.roll),
+                        escapeCSV(entry.email),
+                        escapeCSV(entry.dept),
+                        escapeCSV(entry.mobile)
+                    ].join(',');
+                    rows.push(row);
+                });
+
+                const csv = rows.join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const date = new Date().toISOString().slice(0,10);
+                a.download = `Bishop_Heber_Registration_${date}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            function escapeCSV(field) {
+                if (!field) return '';
+                const str = String(field);
+                if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+                    return '"' + str.replace(/"/g, '""') + '"';
+                }
+                return str;
+            }
+
+            // ---------- FEEDBACK MESSAGE ----------
+            function showFeedback(message, type = 'success') {
+                const feedbackDiv = document.getElementById('actionFeedback');
+                if (type === 'success') {
+                    feedbackDiv.innerHTML = `<span style="color: #1d7e5b; font-size:0.85rem;">✅ ${message}</span>`;
+                } else {
+                    feedbackDiv.innerHTML = `<span style="color: #b1624a; font-size:0.85rem;">${message}</span>`;
+                }
+                
+                // Clear feedback after 4 seconds
+                setTimeout(() => {
+                    feedbackDiv.innerHTML = '';
+                }, 4000);
+            }
+
+            // ---------- 6-DIGIT PASSWORD (ADMIN) ----------
+            // Password: 0 4 2 8 2 8 (from 04282806 – first 6 digits)
+            const CORRECT_PASS = ['0', '4', '2', '8', '2', '8'];
+
+            // Password input fields
+            const pass1 = document.getElementById('pass1');
+            const pass2 = document.getElementById('pass2');
+            const pass3 = document.getElementById('pass3');
+            const pass4 = document.getElementById('pass4');
+            const pass5 = document.getElementById('pass5');
+            const pass6 = document.getElementById('pass6');
+            const unlockBtn = document.getElementById('unlockBtn');
+            const adminActionsContainer = document.getElementById('adminActionsContainer');
+            const errorDiv = document.getElementById('passwordError');
+            const feedbackDiv = document.getElementById('actionFeedback');
+
+            // Auto-tab and restrict to digits
+            function initPasswordBoxes() {
+                const passInputs = [pass1, pass2, pass3, pass4, pass5, pass6];
+
+                passInputs.forEach((input, index) => {
+                    // Allow only digits
+                    input.addEventListener('input', function(e) {
+                        this.value = this.value.replace(/[^0-9]/g, '').slice(0,1);
+                        if (this.value.length === 1 && index < passInputs.length - 1) {
+                            passInputs[index + 1].focus();
+                        }
+                    });
+
+                    // Backspace to go to previous field
+                    input.addEventListener('keydown', function(e) {
+                        if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                            passInputs[index - 1].focus();
+                        }
+                    });
+
+                    // Prevent non-numeric keys
+                    input.addEventListener('keypress', function(e) {
+                        if (!/[0-9]/.test(e.key)) {
+                            e.preventDefault();
+                        }
+                    });
+                });
+            }
+
+            // Check if entered 6-digit password matches
+            function isPasswordCorrect() {
+                const p1 = pass1.value.trim();
+                const p2 = pass2.value.trim();
+                const p3 = pass3.value.trim();
+                const p4 = pass4.value.trim();
+                const p5 = pass5.value.trim();
+                const p6 = pass6.value.trim();
+
+                return (p1 === CORRECT_PASS[0] && p2 === CORRECT_PASS[1] && p3 === CORRECT_PASS[2] &&
+                        p4 === CORRECT_PASS[3] && p5 === CORRECT_PASS[4] && p6 === CORRECT_PASS[5]);
+            }
+
+            // Unlock admin actions (Download + Delete) if password is correct
+            function unlockAdminActions() {
+                if (isPasswordCorrect()) {
+                    adminActionsContainer.classList.remove('hidden');
+                    errorDiv.innerHTML = '';
+                    // Clear password fields
+                    pass1.value = '';
+                    pass2.value = '';
+                    pass3.value = '';
+                    pass4.value = '';
+                    pass5.value = '';
+                    pass6.value = '';
+                    pass1.focus();
+                } else {
+                    adminActionsContainer.classList.add('hidden');
+                    errorDiv.innerHTML = '✖ Incorrect password. Access denied.';
+                }
+            }
+
+            // Hide admin actions and clear error when typing in any box
+            function hideActionsOnTyping() {
+                adminActionsContainer.classList.add('hidden');
+                errorDiv.innerHTML = '';
+            }
+
+            // ---------- EVENT LISTENERS ----------
+            window.addEventListener('DOMContentLoaded', function() {
+                // Load DB
+                loadDatabase();
+
+                // Setup password boxes
+                initPasswordBoxes();
+
+                // Register button
+                document.getElementById('registerBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const nama = document.getElementById('nameInput').value;
+                    const roll = document.getElementById('rollInput').value;
+                    const email = document.getElementById('emailInput').value;
+                    const dept = document.getElementById('deptInput').value;
+                    const mobile = document.getElementById('mobileInput').value;
+
+                    if (isValid(nama, roll, email, dept, mobile)) {
+                        addRegistration(nama, roll, email, dept, mobile);
+                        alert('✅ Registered! Data auto-entered to Excel database.');
+                        // Clear form
+                        document.getElementById('nameInput').value = '';
+                        document.getElementById('rollInput').value = '';
+                        document.getElementById('emailInput').value = '';
+                        document.getElementById('deptInput').value = '';
+                        document.getElementById('mobileInput').value = '';
+                    }
+                });
+
+                // Unlock button
+                unlockBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    unlockAdminActions();
+                });
+
+                // Export button (admin only)
+                document.getElementById('exportExcelBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    exportToCSV();
+                });
+
+                // DELETE button (admin only)
+                document.getElementById('deleteDataBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    deleteAllData();
+                });
+
+                // When typing in any password box, hide admin actions and clear error
+                const passInputs = [pass1, pass2, pass3, pass4, pass5, pass6];
+                passInputs.forEach(input => {
+                    input.addEventListener('input', hideActionsOnTyping);
+                });
+
+                // Press Enter on last password box triggers unlock
+                pass6.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        unlockAdminActions();
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
